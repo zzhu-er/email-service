@@ -18,6 +18,6 @@ public class EmailService {
     }
 
     public void save(Email savedEmail) {
-
+        emailRepository.save(savedEmail);
     }
 }

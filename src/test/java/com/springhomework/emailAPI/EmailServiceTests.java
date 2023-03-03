@@ -2,6 +2,7 @@ package com.springhomework.emailAPI;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
@@ -27,5 +28,17 @@ public class EmailServiceTests {
         //then
         assertNull(result);
         verify(emailRepository,times(1)).findById(id);
+    }
+
+    @Test
+    void shouldSaveSuccessfully() {
+        //given
+        Email savedEmail = new Email();
+        savedEmail.setEmail("123456@thoughtworks.com");
+        savedEmail.setId(1L);
+        //when
+        emailService.save(savedEmail);
+        //then
+        verify(emailRepository,times(1)).save(savedEmail);
     }
 }

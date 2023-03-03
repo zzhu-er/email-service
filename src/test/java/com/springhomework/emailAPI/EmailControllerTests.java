@@ -35,19 +35,20 @@ public class EmailControllerTests {
         verify(emailService, times(1)).findById(id);
     }
 
-//    @Test
-//    void shouldGetSuccessWhenSaveEmail() throws Exception {
-//        //given
-//        Email savedEmail = new Email();
-//        savedEmail.setId(1L);
-//        savedEmail.setEmail("123456@thoughtworks.com");
-//        doNothing().when(emailService).save(savedEmail);
-//        //when
-//        //then
-//        mvc.perform(MockMvcRequestBuilders.post("/emails")
-//                .contentType(MediaType.APPLICATION_JSON_VALUE)
-//                .content(new ObjectMapper().writeValueAsString(savedEmail)))
-//                .andExpect(status().isCreated())
-//                .andExpect(jsonPath("$").value("EMAIL SAVED SUCCESSFULLY"));
-//    }
+    @Test
+    void shouldGetSuccessWhenSaveEmail() throws Exception {
+        //given
+        Email savedEmail = new Email();
+        savedEmail.setId(1L);
+        savedEmail.setEmail("123456@thoughtworks.com");
+        doNothing().when(emailService).save(savedEmail);
+        //when
+        //then
+        mvc.perform(MockMvcRequestBuilders.post("/emails")
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .content(new ObjectMapper().writeValueAsString(savedEmail)))
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$").value("EMAIL SAVED SUCCESSFULLY"));
+        verify(emailService,times(1)).save(savedEmail);
+    }
 }

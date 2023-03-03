@@ -2,6 +2,7 @@ package com.springhomework.emailAPI;
 
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,8 +20,9 @@ public class EmailController {
     public Email getById(@PathVariable Long id) {
         return emailService.findById(id);
     }
-//    @PostMapping
-//    public ResponseEntity<String> save(Email savedEmail) {
-//
-//    }
+    @PostMapping
+    public ResponseEntity<String> save(@RequestBody Email savedEmail) {
+        emailService.save(savedEmail);
+        return new ResponseEntity<>("EMAIL SAVED SUCCESSFULLY", HttpStatus.CREATED);
+    }
 }

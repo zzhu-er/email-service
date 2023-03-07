@@ -12,12 +12,11 @@ import java.util.Optional;
 public class EmailService {
     private EmailRepository emailRepository;
 
-    public Email findById(Long id) {
-        Optional<Email> findEmail =  emailRepository.findById(id);
-        return findEmail.orElse(null);
+    public List<Email> findById(Long id) {
+        return emailRepository.findAllByUserId(id);
     }
 
-    public void save(Email savedEmail) {
-        emailRepository.save(savedEmail);
+    public void save(List<Email> savedEmails) {
+        emailRepository.saveAll(savedEmails);
     }
 }

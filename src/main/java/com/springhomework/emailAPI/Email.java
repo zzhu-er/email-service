@@ -17,5 +17,8 @@ public class Email {
     private Long id;
 
     @Column(nullable = false)
+    private Long userId = 0L;
+
+    @Column(nullable = false)
     private String email;
 }

@@ -17,12 +17,12 @@ public class EmailController {
     private EmailService emailService;
 
     @GetMapping("/{id}")
-    public Email getById(@PathVariable Long id) {
+    public List<Email> getById(@PathVariable Long id) {
         return emailService.findById(id);
     }
     @PostMapping
-    public ResponseEntity<String> save(@RequestBody Email savedEmail) {
-        emailService.save(savedEmail);
+    public ResponseEntity<String> save(@RequestBody List<Email> savedEmails) {
+        emailService.save(savedEmails);
         return new ResponseEntity<>("EMAIL SAVED SUCCESSFULLY", HttpStatus.CREATED);
     }
 }

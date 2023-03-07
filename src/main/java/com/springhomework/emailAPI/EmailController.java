@@ -20,9 +20,9 @@ public class EmailController {
     public List<Email> getById(@PathVariable Long id) {
         return emailService.findById(id);
     }
-    @PostMapping
-    public ResponseEntity<String> save(@RequestBody List<Email> savedEmails) {
-        emailService.save(savedEmails);
+    @PostMapping("/{userId}")
+    public ResponseEntity<String> save(@PathVariable Long userId, @RequestBody List<Email> savedEmails) {
+        emailService.save(userId, savedEmails);
         return new ResponseEntity<>("EMAIL SAVED SUCCESSFULLY", HttpStatus.CREATED);
     }
 }

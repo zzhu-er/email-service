@@ -16,7 +16,8 @@ public class EmailService {
         return emailRepository.findAllByUserId(id);
     }
 
-    public void save(List<Email> savedEmails) {
+    public void save(Long userId, List<Email> savedEmails) {
+        savedEmails.forEach(email -> email.setUserId(userId));
         emailRepository.saveAll(savedEmails);
     }
 }

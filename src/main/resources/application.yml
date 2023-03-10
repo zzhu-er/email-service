@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5433/homework_email
+    url: jdbc:postgresql://db:5432/homework_email
     username: user
     password: pass
 
@@ -17,7 +17,7 @@ spring:
     user:
       name: admin
       password: 123456
-    
+
 
 logging:
   level:

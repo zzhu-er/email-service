@@ -2,13 +2,14 @@ package com.springhomework.emailAPI;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
-import java.util.Optional;
+import java.util.Collections;
+import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
 @SpringBootTest
@@ -22,23 +23,24 @@ public class EmailServiceTests {
     void shouldReturnEmptyWhenNoData() {
         //given
         Long id = 1L;
-        when(emailRepository.findById(id)).thenReturn(Optional.ofNullable(null));
+        when(emailRepository.findAllByUserId(id)).thenReturn(Collections.emptyList());
         //when
-        Email result = emailService.findById(id);
+        List<Email> result = emailService.findByUserId(id);
         //then
-        assertNull(result);
-        verify(emailRepository,times(1)).findById(id);
+        assertNotNull(result);
+        assertTrue(result.isEmpty());
+        verify(emailRepository,times(1)).findAllByUserId(id);
     }
 
     @Test
     void shouldSaveSuccessfully() {
         //given
-        Email savedEmail = new Email();
-        savedEmail.setEmail("123456@thoughtworks.com");
-        savedEmail.setId(1L);
+        Long userId = 1L;
+        Email savedEmail = new Email(1L, userId, "123456@thoughtworks.com");
+        List<Email> savedEmails = List.of(savedEmail);
         //when
-        emailService.save(savedEmail);
+        emailService.save(userId, savedEmails);
         //then
-        verify(emailRepository,times(1)).save(savedEmail);
+        verify(emailRepository,times(1)).saveAll(savedEmails);
     }
 }

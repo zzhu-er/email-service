@@ -1,6 +1,8 @@
-package com.springhomework.emailAPI;
+package com.springhomework.emailAPI.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.springhomework.emailAPI.model.Email;
+import com.springhomework.emailAPI.service.EmailService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;

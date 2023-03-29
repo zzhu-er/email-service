@@ -1,5 +1,7 @@
-package com.springhomework.emailAPI;
+package com.springhomework.emailAPI.service;
 
+import com.springhomework.emailAPI.model.Email;
+import com.springhomework.emailAPI.repository.EmailRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

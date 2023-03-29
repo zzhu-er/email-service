@@ -1,4 +1,4 @@
-package com.springhomework.emailAPI;
+package com.springhomework.emailAPI.model;
 
 import lombok.*;
 

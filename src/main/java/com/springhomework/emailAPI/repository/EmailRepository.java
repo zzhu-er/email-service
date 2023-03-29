@@ -1,5 +1,6 @@
-package com.springhomework.emailAPI;
+package com.springhomework.emailAPI.repository;
 
+import com.springhomework.emailAPI.model.Email;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

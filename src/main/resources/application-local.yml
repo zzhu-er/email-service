@@ -1,5 +1,5 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5433/homework_email
-    username: user
+    url: jdbc:postgresql://localhost:5432/homework_email
+    username: homework
     password: pass

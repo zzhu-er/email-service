@@ -1,4 +1,4 @@
-package com.springhomework.emailAPI;
+package com.springhomework.emailAPI.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

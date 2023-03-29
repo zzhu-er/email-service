@@ -1,5 +1,7 @@
-package com.springhomework.emailAPI;
+package com.springhomework.emailAPI.controller;
 
+import com.springhomework.emailAPI.service.EmailService;
+import com.springhomework.emailAPI.model.Email;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

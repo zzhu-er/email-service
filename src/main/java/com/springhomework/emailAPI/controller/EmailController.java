@@ -14,15 +14,25 @@ import java.util.List;
 @AllArgsConstructor
 public class EmailController {
 
-    private EmailService emailService;
+  private EmailService emailService;
 
-    @GetMapping("/{id}")
-    public List<Email> getByUserId(@PathVariable Long id) {
-        return emailService.findByUserId(id);
-    }
-    @PostMapping("/{userId}")
-    public ResponseEntity<String> save(@PathVariable Long userId, @RequestBody List<Email> savedEmails) {
-        emailService.save(userId, savedEmails);
-        return new ResponseEntity<>("EMAIL SAVED SUCCESSFULLY", HttpStatus.CREATED);
-    }
+  @GetMapping("/{userId}")
+  public List<Email> getByUserId(@PathVariable Long userId) {
+    return emailService.findByUserId(userId);
+  }
+
+  @PostMapping("/{userId}")
+  public ResponseEntity<String> save(@PathVariable Long userId,
+      @RequestBody List<Email> savedEmails) {
+    emailService.save(userId, savedEmails);
+    return new ResponseEntity<>("EMAIL SAVED SUCCESSFULLY", HttpStatus.CREATED);
+  }
+
+  @DeleteMapping("/{id}")
+  public ResponseEntity<String> delete(@PathVariable Long id) {
+    Email deletedEmail = new Email();
+    deletedEmail.setId(id);
+    emailService.delete(deletedEmail);
+    return new ResponseEntity<>(HttpStatus.OK);
+  }
 }

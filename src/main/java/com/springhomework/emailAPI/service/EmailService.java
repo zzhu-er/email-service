@@ -10,14 +10,19 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 public class EmailService {
-    private EmailRepository emailRepository;
 
-    public List<Email> findByUserId(Long id) {
-        return emailRepository.findAllByUserId(id);
-    }
+  private EmailRepository emailRepository;
 
-    public void save(Long userId, List<Email> savedEmails) {
-        savedEmails.forEach(email -> email.setUserId(userId));
-        emailRepository.saveAll(savedEmails);
-    }
+  public List<Email> findByUserId(Long id) {
+    return emailRepository.findAllByUserId(id);
+  }
+
+  public void save(Long userId, List<Email> savedEmails) {
+    savedEmails.forEach(email -> email.setUserId(userId));
+    emailRepository.saveAll(savedEmails);
+  }
+
+  public void delete(Email deletedEmail) {
+    emailRepository.delete(deletedEmail);
+  }
 }

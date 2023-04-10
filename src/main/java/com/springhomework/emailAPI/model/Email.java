@@ -1,8 +1,15 @@
 package com.springhomework.emailAPI.model;
 
-import lombok.*;
-
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
@@ -17,6 +24,8 @@ public class Email {
     @Column(nullable = false)
     private Long userId = 0L;
 
+    @javax.validation.constraints.Email
+    @NotEmpty
     @Column(nullable = false)
     private String email;
 }
